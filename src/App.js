@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React, { Component } from "react";
 import './App.css';
+import "./static/fonts/fonts.css";
+// import Container from './component/Container';
+// import Header from './component/Header';
+// import TopMenuBar from './component/TopMenuBar';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  Redirect
+} from "react-router-dom";
+import ScrollToTop from "./ScrollToTop";
+import JoinPage from "./pages/join";
+import MainPage from "./pages/index";
+import ProductPage from "./pages/product";
+import CartPage from "./pages/cart";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Router>
+          <ScrollToTop>
+            <Route path="/" component={ MainPage } exact/>
+            <Route path="/product" component={ ProductPage } />
+            <Route path="/join" component={ JoinPage } />
+            <Route path="/cart" component={ CartPage } />
+          </ScrollToTop>
+        </Router>
+      </div>
+      
+    );
+  }
 }
 
 export default App;
